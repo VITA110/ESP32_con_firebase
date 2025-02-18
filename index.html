@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Control del Motor</title>
+    <!-- Carga de Firebase SDK (v9 modular) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            margin: 10px;
+            padding: 15px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Control del Motor</h1>
+    <button onclick="encenderMotor()">Encender Motor</button>
+    <button onclick="apagarMotor()">Apagar Motor</button>
+    <button onclick="cambiarDireccion()">Cambiar Dirección</button>
+    <p>Contador de Pulsos: <span id="pulseCounter">0</span></p>
+
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBw0OT96Wc0tSOf9oFnPT9R2Uwbty4DoDY",
+            authDomain: "ecodrop-esp32.firebaseapp.com",
+            databaseURL: "https://ecodrop-esp32-default-rtdb.firebaseio.com",
+            projectId: "ecodrop-esp32",
+            storageBucket: "ecodrop-esp32.firebasestorage.app",
+            messagingSenderId: "542331947970",
+            appId: "1:542331947970:web:809530a7d223c9de5c645b"
+        };
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // Función para encender el motor
+        function encenderMotor() {
+            db.ref().update({ motor_on: true })
+                .then(() => console.log("Motor encendido"))
+                .catch(error => console.error("Error:", error));
+        }
+
+        // Función para apagar el motor
+        function apagarMotor() {
+            db.ref().update({ motor_on: false })
+                .then(() => console.log("Motor apagado"))
+                .catch(error => console.error("Error:", error));
+        }
+
+        // Función para cambiar la dirección del motor
+        function cambiarDireccion() {
+            db.ref("motor_dir").get().then((snapshot) => {
+                if (snapshot.exists()) {
+                    let currentDir = snapshot.val();
+                    db.ref().update({ motor_dir: !currentDir })
+                        .then(() => console.log("Dirección cambiada"))
+                        .catch(error => console.error("Error:", error));
+                } else {
+                    console.error("No existe la entrada motor_dir");
+                }
+            }).catch((error) => {
+                console.error("Error obteniendo motor_dir:", error);
+            });
+        }
+
+    </script>
+</body>
+
+</html>
