@@ -46,6 +46,8 @@
     <button onclick="encenderMotor()">Prender</button>
     <button onclick="apagarMotor()">Apagar </button>
     <button onclick="cambiarDireccion()">Cambiar Direeccion</button>
+    <input type="number" id="posicionObjetivo" placeholder="Distancia en mm">
+    <button onclick="moverMotor()">Mover</button>
    
     <script>
         // Configuración de Firebase
@@ -91,6 +93,16 @@
             }).catch((error) => {
                 console.error("Error obteniendo motor_dir:", error);
             });
+             function moverMotor() {
+        let distancia = document.getElementById("posicionObjetivo").value;
+        if (distancia !== "") {
+            db.ref().update({ posicion_mm: parseInt(distancia) })
+                .then(() => console.log("Posición actualizada a:", distancia))
+                .catch(error => console.error("Error:", error));
+        } else {
+            console.error("Ingrese una distancia válida.");
+        }
+    }
         }
 
     </script>
