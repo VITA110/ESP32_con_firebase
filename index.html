@@ -11,15 +11,25 @@
 
 <body>
     <h1>Motor</h1>
-    <button onclick="encenderMotor()">Prender</button>
-    <button onclick="apagarMotor()">Apagar </button>
-    <button onclick="cambiarDireccion()">Cambiar Direccion</button>
-    <input type="number" id="posicionObjetivo" placeholder="Distancia en mm">
-    <button onclick="moverMotor()">Mover</button>
-    <button onclick="moverIzquierda()">Mover Izquierda</button>
-    <button onclick="moverCentro()">Mover Centro</button>
-    <button onclick="moverDerecha()">Mover Derecha</button>
+    
+   
 
+<div class="flex-container">
+   <div class="flex-items">
+    <button class="btn_on" onclick="encenderMotor()">Prender</button>
+    <button class="btn_off" onclick="apagarMotor()">Apagar </button>
+    <button class="btn_dir" onclick="cambiarDireccion()">Cambiar Direccion</button>
+   </div>
+   <div class="flex-items">
+    <input type="number" id="posicionObjetivo" placeholder="Distancia en mm">
+    <button class="btn_posicion" onclick="moverMotor()">Mover</button>
+   </div>
+   <div class="flex-items">
+    <button class="btn_izq" onclick="moverIzquierda()">Mover Izquierda</button>
+    <button class="btn_cen" onclick="moverCentro()">Mover Centro</button>
+    <button class="btn_der" onclick="moverDerecha()">Mover Derecha</button>
+   </div>
+</div>
    
     <script src="script.js"></script>
 </body>

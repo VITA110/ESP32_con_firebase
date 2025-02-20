@@ -3,6 +3,7 @@ body {
     text-align: center;
     background-color: #f0f0f0;
     margin-top: 50px;
+    
 }
 
 h1 {
@@ -14,17 +15,95 @@ button {
     padding: 15px 25px;
     font-size: 16px;
     cursor: pointer;
-    border: none;
     border-radius: 5px;
     background-color: #007BFF;
     color: white;
 }
 
 button:hover {
-    background-color: #0056b3;
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
+
+button:active {
+    transform: scale(0.95);
+    border-color: #000000;
+    transition: transform 0.1s ease-in-out, border-color 0.1s ease-in-out;
+}
+
 
 p {
     font-size: 18px;
     color: #333;
 }
+
+.btn_on {
+    background-color: #42a411;
+    color: white;
+}
+
+.btn_off {
+    background-color: #a42711;
+    color: white;
+}
+
+.btn_dir {
+    background-color: #b6c000;
+    color: white;
+}
+
+.btn_izq {
+    background-color: #42a411;
+    color: white;
+}
+
+.btn_der {
+    background-color: #42a411;
+    color: white;
+}
+
+.btn_cen {
+    background-color: #a42711;
+    color: white;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+  }
+  
+  .flex-items:nth-child(1) {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  
+  .flex-items:nth-child(2) {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    margin-bottom: 50px;
+  }
+  
+  .flex-items:nth-child(3) {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    margin-bottom: 50px;
+  }
