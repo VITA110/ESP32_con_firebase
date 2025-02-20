@@ -54,3 +54,21 @@ function moverMotor() {
         console.error("Ingrese una distancia válida.");
     }
 }
+
+function moverIzquierda() {
+    db.ref().update({ posicion_mm: 0 }) // Suponiendo que 0 mm es la posición izquierda
+        .then(() => console.log("Moviendo a la izquierda"))
+        .catch(error => console.error("Error:", error));
+}
+
+function moverCentro() {
+    db.ref().update({ posicion_mm: 50 }) // Suponiendo que 50 mm es la posición central
+        .then(() => console.log("Moviendo al centro"))
+        .catch(error => console.error("Error:", error));
+}
+
+function moverDerecha() {
+    db.ref().update({ posicion_mm: 100 }) // Suponiendo que 100 mm es la posición derecha
+        .then(() => console.log("Moviendo a la derecha"))
+        .catch(error => console.error("Error:", error));
+}
